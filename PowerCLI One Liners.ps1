@@ -13,4 +13,4 @@ Get-NsxSecurityGroup | Where {$_.InnerXml -like "*DirectoryGroup*"} | Remove-Nsx
 Get-NsxService | where {$_.InnerXml -like "*<value>8281*"}
 
 # Create a non-universal firewall rule from a specific source and destination VM as well as service
-Get-NsxFirewallSection "vRA" | New-NsxFirewallRule -Name "test - Appliance to vRO" -Source (get-vm VRL-AUT1) -destination (get-vm VRL-ORC1) -service (Get-NsxService | where {$_.InnerXml -like "*<value>8281*" -and $_.IsUniversal -eq "false"}) -action Allow -EnableLogging
+Get-NsxFirewallSection "vRA" | New-NsxFirewallRule -Name "Appliance to vRO" -Source (get-vm VRL-AUT1) -destination (get-vm VRL-ORC1) -service (Get-NsxService | where {$_.InnerXml -like "*<value>8281*" -and $_.IsUniversal -eq "false"}) -action Allow -EnableLogging
