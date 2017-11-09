@@ -1,0 +1,2 @@
+# List all dvSwitch Port Groups that have Netflow enabled, formatted to only show name and enabled status (which should be all true)
+Get-VDPortgroup | where {$_.ExtensionData.Config.defaultPortconfig.ipfixenabled.value -eq "True"} | Select Name, @{Name="NetflowEnabled";Expression={$_.Extensiondata.Config.defaultPortConfig.ipfixEnabled.Value}}
