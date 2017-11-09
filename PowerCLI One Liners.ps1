@@ -14,3 +14,7 @@ Get-NsxService | where {$_.InnerXml -like "*<value>8281*"}
 
 # Create a non-universal firewall rule from a specific source and destination VM as well as service
 Get-NsxFirewallSection "vRA" | New-NsxFirewallRule -Name "Appliance to vRO" -Source (get-vm VRL-AUT1) -destination (get-vm VRL-ORC1) -service (Get-NsxService | where {$_.InnerXml -like "*<value>8281*" -and $_.IsUniversal -eq "false"}) -action Allow -EnableLogging
+
+# Get all applicable firewall rules for a VM
+# Note: Need to fix, command works but returns too much info on the firewall name column
+Get-NsxCliDfwRule -VirtualMachine (Get-VM VRL-AUT1) | Select RuleID, @{Name="RuleName";Expression={Get-NsxFirewallRule -RuleId $_.ruleid | Select Name}} | Sort-Object RuleId -Descending
