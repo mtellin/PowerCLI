@@ -8,3 +8,6 @@ Get-NsxSecurityGroup | Where {$_.InnerXml -like "*DirectoryGroup*"}
 # Alternatively, to also remove the security groups as part of the command 
 # Note: you will be prompted to confirm the group(s) it finds
 Get-NsxSecurityGroup | Where {$_.InnerXml -like "*DirectoryGroup*"} | Remove-NsxSecurityGroup
+
+# Find NSX service that contains specific port - in this case 8281 for vRealize Orchestrator
+Get-NsxService | where {$_.InnerXml -like "*<value>8281*"}
