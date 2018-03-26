@@ -1,6 +1,7 @@
 # Install and activate Azure module
 PSInstall-Module AzureRM.NetCore                                                             
-Import-Module AzureRM.Netcore                                                              PS /Users/mtellin> Import-Module AzureRM.Profile.Netcore
+Import-Module AzureRM.Netcore
+Import-Module AzureRM.Profile.Netcore
 Login-AzureRmAccount 
 
 # Prompt for credential for VM to deploy in Azure
