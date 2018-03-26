@@ -11,4 +11,4 @@ $cred = Get-Credential -Message "Enter a username and password for the virtual m
 New-AzureRmVM -Name Unique2354252vm -Credential $cred
 
 # Clean up after testing is complete
-Remove-AzureRmResourceGroup -Name Unique2354252vm -Verbose -Force
+Get-AzureRmResourceGroup | Remove-AzureRmResourceGroup -Verbose -Force
